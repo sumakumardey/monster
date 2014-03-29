@@ -13,9 +13,9 @@ module Scraper
       doc = Nokogiri::HTML(Scraper::UrlResponse.html_response(pnr))
       data = doc.xpath('//*[starts-with(@class,"table_border_both")]')
       unless (data.blank?)
-      	date = data[2].text.gsub(/\s+/, "").split("-")
-      	time = Time.local(date[2],date[1],date[0])
-      	return if data[0].text.blank?
+        date = data[2].text.gsub(/\s+/, "").split("-")
+        time = Time.local(date[2],date[1],date[0])
+        return if data[0].text.blank?
         hash_obj = {
           :pnr_number => pnr,
           :train_number => data[0].text.gsub("*",""),
@@ -27,9 +27,13 @@ module Scraper
           :boarding_point => data[6].text,
           :seat_class => data[7].text
         }
-        PnrTable.create(hash_obj)
+        pnr_table = PnrTable.create(hash_obj)
+        PassengerStatus.create(:pnr_table_id => pnr_table.id,
+                               :pnr_number => pnr,
+                               :booking_status => data[9].text,
+                               :current_status => data[10].text)
       end
-      
+
     end
 
   end
