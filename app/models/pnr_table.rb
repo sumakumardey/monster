@@ -1,4 +1,4 @@
 class PnrTable < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :pnr_number,:train_number, :train_name, :boarding_date, :starting_point, :ending_point, :reserved_upto, :boarding_point, :seat_class
   set_table_name :pnr_table
 end

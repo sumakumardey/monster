@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329115230) do
+ActiveRecord::Schema.define(:version => 20140329133814) do
 
   create_table "passenger_status", :force => true do |t|
     t.string   "pnr_number",     :limit => 15
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20140329115230) do
     t.string   "ending_point",   :limit => 10
     t.string   "reserved_upto",  :limit => 20
     t.string   "boarding_point", :limit => 20
-    t.string   "class",          :limit => 10
+    t.string   "seat_class",     :limit => 10
   end
 
 end
