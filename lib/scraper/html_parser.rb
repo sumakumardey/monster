@@ -9,16 +9,16 @@ module Scraper
       doc = Nokogiri::HTML(open(url))
     end
 
-    #pnr = "6527838493"
     def self.indian_rail(pnr)
       doc = Nokogiri::HTML(Scraper::UrlResponse.html_response(pnr))
       data = doc.xpath('//*[starts-with(@class,"table_border_both")]')
       unless (data.blank?)
       	date = data[2].text.gsub(/\s+/, "").split("-")
       	time = Time.local(date[2],date[1],date[0])
+      	return if data[0].text.blank?
         hash_obj = {
           :pnr_number => pnr,
-          :train_number => data[0].text,
+          :train_number => data[0].text.gsub("*",""),
           :train_name => data[1].text,
           :boarding_date => time,
           :starting_point => data[3].text,
