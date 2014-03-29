@@ -9,6 +9,7 @@ gem 'activerecord-jdbcsqlite3-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 
 gem 'jruby-openssl'
+gem 'nokogiri', '~> 1.6.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
