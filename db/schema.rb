@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329152136) do
+ActiveRecord::Schema.define(:version => 20140330031151) do
 
   create_table "passenger_status", :force => true do |t|
     t.string   "pnr_number",     :limit => 15
@@ -23,7 +23,31 @@ ActiveRecord::Schema.define(:version => 20140329152136) do
     t.integer  "pnr_table_id"
   end
 
+  create_table "passenger_status_gen", :force => true do |t|
+    t.string   "pnr_number",     :limit => 15
+    t.string   "s_no",           :limit => 15
+    t.string   "booking_status", :limit => 20
+    t.string   "current_status", :limit => 20
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "pnr_table_id"
+    t.integer  "nth_date"
+    t.integer  "seat_moved"
+  end
+
   create_table "pnr_table", :force => true do |t|
+    t.string   "pnr_number",     :limit => 10
+    t.string   "train_number",   :limit => 10
+    t.string   "train_name",     :limit => 40
+    t.datetime "boarding_date"
+    t.string   "starting_point", :limit => 10
+    t.string   "ending_point",   :limit => 10
+    t.string   "reserved_upto",  :limit => 20
+    t.string   "boarding_point", :limit => 20
+    t.string   "seat_class",     :limit => 10
+  end
+
+  create_table "pnr_table_gen", :force => true do |t|
     t.string   "pnr_number",     :limit => 10
     t.string   "train_number",   :limit => 10
     t.string   "train_name",     :limit => 40

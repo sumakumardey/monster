@@ -7,7 +7,7 @@
 development:
   adapter: jdbcmysql
   encoding: utf8
-  database: monster_development
+  database: monster_development1
   username: root
   password: root
 
